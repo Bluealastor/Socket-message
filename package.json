@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Best site",
   "scripts": {
-    "build": "tsc --noEmit && tsc --outDir build $$ npm run copy-public",
+    "build": "tsc --noEmit && tsc --outDir build && npm run copy-public",
     "start": "node build/index.js",
     "copy-public": "copyfiles -u 1 public/**/* build",
     "dev": "nodemon"
