@@ -5,6 +5,7 @@ import { BASE_URL, PORT, PORT3 } from "./config/config";
 import { Server } from "socket.io";
 import { createServer } from "http";
 import cors from "cors"
+import path from "path";
 
 const app = express()
 const server =  createServer(app)
@@ -44,7 +45,7 @@ io.on("connection",(socket) => {
 })
 
 app.get("/", (req: Request, res: Response)=>{
-    res.send("Hello World")
+    res.sendFile(path.join(__dirname, "index.html"))
 })
 
 app.get("/api/messages", (requirement: Request,response:Response)=>{
@@ -64,7 +65,3 @@ client.query("INSERT INTO messages (content) VALUES ($1)",[requirement.body.cont
 server.listen(PORT3),()=>{
     console.log("Server is running in http://localhost:"+PORT3)
 }
-
-app.listen(PORT,()=>{
-    console.log("APP is Running in http://localhost:"+PORT)
-})
